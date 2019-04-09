@@ -34,6 +34,8 @@ public class SandLab
     
     
     display = new SandDisplay("Falling Sand", numRows, numCols, names);
+    
+    grid = new int[numRows][numCols];
   }
   
   //called when the user clicks on a location using the given tool
