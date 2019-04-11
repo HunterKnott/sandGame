@@ -100,19 +100,27 @@ public class SandLab
 		  grid[randRow][randCol] = EMPTY;
 		  grid[randRow + 1][randCol] = SAND;
 	  }
-    
-	  int randDirection = (int)(Math.random() * 3);
-	  if(randDirection == DOWN)
+	  
+	  if(grid[randRow][randCol] == WATER)
 	  {
-		  
-	  }
-	  if(randDirection == LEFT)
-	  {
-		  
-	  }
-	  if(randDirection == RIGHT)
-	  {
-		  
+		  int randDirection = (int)(Math.random() * 3);
+		  if(randDirection == DOWN && grid[randRow + 1][randCol] == EMPTY)
+		  {
+			  grid[randRow][randCol] = EMPTY;
+			  grid[randRow + 1][randCol] = WATER;
+		  }
+		  if(randDirection == LEFT && grid[randRow][randCol - 1] == EMPTY
+				  && randCol != 0)
+		  {
+			  grid[randRow][randCol] = EMPTY;
+			  grid[randRow][randCol - 1] = WATER;
+		  }
+		  if(randDirection == RIGHT && grid[randRow][randCol + 1] == EMPTY
+				  && randCol != grid[0].length)
+		  {
+			  grid[randRow][randCol] = EMPTY;
+			  grid[randRow][randCol + 1] = WATER;
+		  }
 	  }
   }
   
