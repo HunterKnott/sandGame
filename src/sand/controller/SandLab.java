@@ -122,6 +122,12 @@ public class SandLab
 			  grid[randRow][randCol + 1] = WATER;
 		  }
 	  }
+	  
+	  if(grid[randRow][randCol] == SAND && grid[randRow + 1][randCol] == WATER)
+	  {
+		  grid[randRow][randCol] = WATER;
+		  grid[randRow + 1][randCol] = SAND;
+	  }
   }
   
   //do not modify this method!
