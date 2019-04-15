@@ -109,14 +109,12 @@ public class SandLab
 			  grid[randRow][randCol] = EMPTY;
 			  grid[randRow + 1][randCol] = WATER;
 		  }
-		  if(randDirection == LEFT && grid[randRow][randCol - 1] == EMPTY
-				  && grid[randRow + 1][randCol] != EMPTY)//&& randCol - 1 >= 0)
+		  if(randDirection == LEFT && randCol > 0)//&& randCol - 1 >= 0)
 		  {
 			  grid[randRow][randCol] = EMPTY;
 			  grid[randRow][randCol - 1] = WATER;
 		  }
-		  if(randDirection == RIGHT && grid[randRow][randCol + 1] == EMPTY
-				  && grid[randRow + 1][randCol] != EMPTY)//&& randCol + 1 < grid[0].length)
+		  if(randDirection == RIGHT && randCol < grid[0].length - 1)
 		  {
 			  grid[randRow][randCol] = EMPTY;
 			  grid[randRow][randCol + 1] = WATER;
