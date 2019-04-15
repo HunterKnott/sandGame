@@ -11,6 +11,8 @@ public class SandLab
   public static final int METAL = 1;
   public static final int SAND = 2;
   public static final int WATER = 3;
+  public static final int DIRT = 4;
+  public static final int GRASS = 5;
   
   //Constants for random directions
   public static final int DOWN = 0;
@@ -32,12 +34,14 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[4];
+    names = new String[6];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
     names[SAND] = "Sand";
     names[WATER] = "Water";
+    names[DIRT] = "Dirt";
+    names[GRASS] = "Grass";
     
     //1. Add code to initialize the data member grid with same dimensions
     this.grid = new int[numRows][numCols];
@@ -78,6 +82,14 @@ public class SandLab
 			  if(grid[row][col] == WATER)
 			  {
 				  display.setColor(row,  col,  Color.BLUE);
+			  }
+			  if(grid[row][col] == DIRT)
+			  {
+				  display.setColor(row, col, Color.LIGHT_GRAY);
+			  }
+			  if(grid[row][col] == GRASS)
+			  {
+				  display.setColor(row, col, Color.GREEN);
 			  }
 		  }
 	  }
@@ -125,6 +137,12 @@ public class SandLab
 	  {
 		  grid[randRow][randCol] = WATER;
 		  grid[randRow + 1][randCol] = SAND;
+	  }
+	  
+	  if(grid[randRow][randCol] == DIRT && grid[randRow - 1][randCol] == WATER)
+	  {
+		  grid[randRow][randCol] = GRASS;
+		  grid[randRow - 1][randCol] = EMPTY;
 	  }
   }
   
