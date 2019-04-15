@@ -13,6 +13,7 @@ public class SandLab
   public static final int WATER = 3;
   public static final int DIRT = 4;
   public static final int GRASS = 5;
+  public static final int FIRE = 6;
   
   //Constants for random directions
   public static final int DOWN = 0;
@@ -34,7 +35,7 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[6];
+    names = new String[7];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
@@ -42,6 +43,7 @@ public class SandLab
     names[WATER] = "Water";
     names[DIRT] = "Dirt";
     names[GRASS] = "Grass";
+    names[FIRE] = "Fire";
     
     //1. Add code to initialize the data member grid with same dimensions
     this.grid = new int[numRows][numCols];
@@ -91,6 +93,10 @@ public class SandLab
 			  {
 				  display.setColor(row, col, Color.GREEN);
 			  }
+			  if(grid[row][col] == FIRE)
+			  {
+				  display.setColor(row, col, Color.RED);
+			  }
 		  }
 	  }
     
@@ -121,12 +127,13 @@ public class SandLab
 			  grid[randRow][randCol] = EMPTY;
 			  grid[randRow + 1][randCol] = WATER;
 		  }
-		  if(randDirection == LEFT && randCol > 0)//&& randCol - 1 >= 0)
+		  if(randDirection == LEFT && randCol > 0 && grid[randRow][randCol - 1] == EMPTY)
 		  {
 			  grid[randRow][randCol] = EMPTY;
 			  grid[randRow][randCol - 1] = WATER;
 		  }
-		  if(randDirection == RIGHT && randCol < grid[0].length - 1)
+		  if(randDirection == RIGHT && randCol < grid[0].length - 1 
+				  && grid[randRow][randCol + 1] == EMPTY)
 		  {
 			  grid[randRow][randCol] = EMPTY;
 			  grid[randRow][randCol + 1] = WATER;
@@ -143,6 +150,17 @@ public class SandLab
 	  {
 		  grid[randRow][randCol] = GRASS;
 		  grid[randRow - 1][randCol] = EMPTY;
+	  }
+	  
+	  if(grid[randRow][randCol] == GRASS)
+	  {
+		  if((grid[randRow - 1][randCol] == FIRE && randRow > 0) 
+				  || (grid[randRow + 1][randCol] == FIRE && randRow < grid.length)
+				  || (grid[randRow][randCol + 1] == FIRE && randCol < grid[0].length) 
+				  || (grid[randRow][randCol - 1] == FIRE && randCol > 0))
+		  {
+			  grid[randRow][randCol] = FIRE;
+		  }
 	  }
   }
   
