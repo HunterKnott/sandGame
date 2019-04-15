@@ -154,12 +154,19 @@ public class SandLab
 	  
 	  if(grid[randRow][randCol] == GRASS)
 	  {
-		  if((grid[randRow - 1][randCol] == FIRE && randRow > 0) 
-				  || (grid[randRow + 1][randCol] == FIRE && randRow < grid.length)
-				  || (grid[randRow][randCol + 1] == FIRE && randCol < grid[0].length) 
-				  || (grid[randRow][randCol - 1] == FIRE && randCol > 0))
+		  if(randRow > 0 && randRow < grid.length)
 		  {
-			  grid[randRow][randCol] = FIRE;
+			  if(grid[randRow + 1][randCol] == FIRE || grid[randRow - 1][randCol] == FIRE)
+			  {
+				  grid[randRow][randCol] = FIRE;
+			  }
+		  }
+		  if(randCol > 0 && randCol < grid[0].length - 1)
+		  {
+			  if(grid[randRow][randCol + 1] == FIRE || grid[randRow][randCol - 1] == FIRE)
+			  {
+				  grid[randRow][randCol] = FIRE;
+			  }
 		  }
 	  }
   }
