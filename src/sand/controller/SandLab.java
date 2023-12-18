@@ -61,7 +61,6 @@ public class SandLab
   //copies each element of grid into the display
   public void updateDisplay()
   {
-      //Step 3
    //Hint - use a nested for loop
 	  for(int row = 0; row < grid.length; row++)
 	  {
