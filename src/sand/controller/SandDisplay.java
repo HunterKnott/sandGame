@@ -10,6 +10,7 @@ import javax.swing.event.*;
 public class SandDisplay extends JComponent implements MouseListener,
   MouseMotionListener, ActionListener, ChangeListener
 {
+  private static final long serialVersionUID = 1L;
   private Image image;
   private int cellSize;
   private JFrame frame;
@@ -68,8 +69,8 @@ public class SandDisplay extends JComponent implements MouseListener,
     slider.setSnapToTicks(true);
     slider.setPaintTicks(true);
     Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-    labelTable.put(new Integer(0), new JLabel("Slow"));
-    labelTable.put(new Integer(100), new JLabel("Fast"));
+    labelTable.put(Integer.valueOf(0), new JLabel("Slow"));
+    labelTable.put(Integer.valueOf(100), new JLabel("Fast"));
     slider.setLabelTable(labelTable);
     slider.setPaintLabels(true);
 
