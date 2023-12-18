@@ -5,7 +5,6 @@ import java.util.*;
 
 public class SandLab
 {
-  //Step 4,6
   //add constants for particle types here
   public static final int EMPTY = 0;
   public static final int METAL = 1;
