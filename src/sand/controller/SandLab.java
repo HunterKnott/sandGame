@@ -53,7 +53,7 @@ public class SandLab
     
   }
   
-  //called when the user clicks on a location using the given tool
+  //called when user clicks on a location using the given tool
   private void locationClicked(int row, int col, int tool)
   {
     // Assign the values associated with the parameters to the grid
