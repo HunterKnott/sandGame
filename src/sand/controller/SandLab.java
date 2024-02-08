@@ -60,7 +60,7 @@ public class SandLab
 	  grid[row][col] = tool;
   }
 
-  //copies each element of grid into the display
+  //copies each element of grid into display
   public void updateDisplay()
   {
 	  for(int row = 0; row < grid.length; row++)
@@ -116,11 +116,16 @@ public class SandLab
 	  int row = (int)(Math.random() * grid.length - 1);
 	  int col = (int)(Math.random() * grid[0].length);
 	  
-	  // Sand will fall if there's empty space below it
+	  // Sand and Ash will fall if there's empty space below it
 	  if(grid[row][col] == SAND && grid[row + 1][col] == EMPTY)
 	  {
 		  grid[row][col] = EMPTY;
 		  grid[row + 1][col] = SAND;
+	  }
+	  if(grid[row][col] == ASH && grid[row + 1][col] == EMPTY)
+	  {
+		  grid[row][col] = EMPTY;
+		  grid[row + 1][col] = ASH;
 	  }
 	  
 	  
@@ -151,11 +156,16 @@ public class SandLab
 		  }
 	  }
 	  
-	  // Sand will displace water below it
+	  // Sand or ash will displace water below it
 	  if(grid[row][col] == SAND && grid[row + 1][col] == WATER)
 	  {
 		  grid[row][col] = WATER;
 		  grid[row + 1][col] = SAND;
+	  }
+	  if(grid[row][col] == ASH && grid[row + 1][col] == WATER)
+	  {
+		  grid[row][col] = WATER;
+		  grid[row + 1][col] = ASH;
 	  }
 	  
 	  // Water above dirt will produce grass
